@@ -7,7 +7,7 @@ async function dropTables() {
     //NEED to change names of databases
     //Might be missing some tables
     await client.query(
-    `
+      `
      DROP TABLE IF EXISTS shoes;
      DROP TABLE IF EXISTS reviews;
      DROP TABLE IF EXISTS order;
@@ -20,7 +20,8 @@ async function dropTables() {
 }
 
 async function createTables() {
-    await client.query(`
+  //Need to add pictures
+  await client.query(`
         CREATE TABLE users (
             id SERIAL PRIMARY KEY,
             username VARCHAR(255) UNIQUE NOT NULL,
@@ -32,6 +33,8 @@ async function createTables() {
             city VARCHAR(255) NOT NULL,
             state VARCHAR(255) NOT NULL,
             zip INTEGER NOT NULL
+
+        )
         );
         CREATE TABLE reviews (
           id SERIAL PRIMARY KEY,
@@ -40,7 +43,17 @@ async function createTables() {
           rating SMALLINT NOT NULL CHECK(rating BETWEEN 1 AND 5),
           comment TEXT NOT NULL
          )
+
     `)
+    CREATE TABLE shoes (
+            id SERIAL PRIMARY KEY,
+            username VARCHAR(255) UNIQUE NOT NULL, 
+            shoename VARCHAR(255) UNIQUE NOT NULL,
+            description TEXT NOT NULL,
+            price INTEGER NOT NULL,
+            type VARCHAR(255) NOT NULL,
+            size INTEGER NOT NULL,
+        )
 }
 
 /// DUMMY DATA BELOW// - Could be moved to seedData.js and then imported for simplicity
