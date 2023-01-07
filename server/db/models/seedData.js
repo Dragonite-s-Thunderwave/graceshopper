@@ -32,7 +32,14 @@ async function createTables() {
             city VARCHAR(255) NOT NULL,
             state VARCHAR(255) NOT NULL,
             zip INTEGER NOT NULL
-        )
+        );
+        CREATE TABLE reviews (
+          id SERIAL PRIMARY KEY,
+          "authorId" INTEGER REFERENCES users(id),
+          username VARCHAR(255) UNIQUE NOT NULL,
+          rating SMALLINT NOT NULL CHECK(rating BETWEEN 1 AND 5),
+          comment TEXT NOT NULL
+         )
     `)
 }
 
@@ -66,6 +73,7 @@ async function createInitialUsers() {
     console.error('Error creating dummy data users', error)
   }
 }
+
 
 module.exports = {
   dropTables,
