@@ -35,7 +35,7 @@ async function createTables() {
             zip INTEGER NOT NULL
 
         );         
-        CREATE TABLE order_history(
+        CREATE TABLE order(
           id SERIAL PRIMARY KEY,
           "userId" INTEGER REFERENCES users(id),
           "isComplete" VARCHAR NOT NULL,
