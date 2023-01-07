@@ -10,7 +10,7 @@ async function dropTables() {
     `
      DROP TABLE IF EXISTS shoes;
      DROP TABLE IF EXISTS reviews;
-     DROP TABLE IF EXISTS order;
+     DROP TABLE IF EXISTS order_history;
      DROP TABLE IF EXISTS users`
     )
     console.log('Finished dropping tables')
