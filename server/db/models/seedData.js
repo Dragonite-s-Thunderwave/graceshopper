@@ -39,7 +39,14 @@ async function createTables() {
           username VARCHAR(255) UNIQUE NOT NULL,
           rating SMALLINT NOT NULL CHECK(rating BETWEEN 1 AND 5),
           comment TEXT NOT NULL
-         )
+         );
+         CREATE TABLE order_history(
+          id SERIAL PRIMARY KEY,
+          "userId" INTEGER REFERENCES users(id),
+          "isComplete" VARCHAR NOT NULL,
+          total DECIMAL (255,2) NOT NULL,
+          "orderDate" DATE NOT NULL
+        );
     `)
 }
 
