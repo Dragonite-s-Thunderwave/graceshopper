@@ -37,7 +37,7 @@ async function createTables() {
           id SERIAL PRIMARY KEY,
           "authorId" INTEGER REFERENCES users(id),
           username VARCHAR(255) UNIQUE NOT NULL,
-          rating BOOLEAN DEFAULT true,
+          rating SMALLINT NOT NULL CHECK(rating BETWEEN 1 AND 5),
           comment TEXT NOT NULL
          )
     `)
